@@ -1,3 +1,54 @@
+// Functions!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+function employeeBonus (worker) {
+  console.log('in employeeBonus',worker);
+  let afterraise = {
+    name: worker.name,
+    bonusPercentage: 0,
+    totalBonus: 0,
+    totalCompensaction: 0
+  }
+  //console.log(afterraise);
+  newBonuspercentage = Number(bonusCalculator(worker));
+  afterraise.bonusPercentage = Number(newBonuspercentage),
+  afterraise.totalBonus = Math.floor(worker.annualSalary*newBonuspercentage),
+  afterraise.totalCompensaction = Number(worker.annualSalary)+Number(worker.annualSalary*newBonuspercentage)
+  console.log(afterraise);
+}
+
+function bonusCalculator (worker) {
+  let changedPercentage = 0;
+  console.log('in employeeCalculator');
+  
+  if(worker.reviewRating<=2){
+    changedPercentage = 0;
+  }
+  else if(worker.reviewRating===3){
+    changedPercentage = 4;
+  }
+  else if(worker.reviewRating===4){
+    changedPercentage = 6;
+  }
+  else if(worker.reviewRating===5){
+    changedPercentage = 10;
+  }
+  if (worker.employeeNumber.toString().length=== 4 ){
+    changedPercentage += 5;
+  }
+  if (worker.annualSalary > 65000){
+    changedPercentage -= 1;
+  }
+  if (changedPercentage > 13){
+    changedPercentage = 13;
+  }
+  if (changedPercentage < 0){
+    changedPercentage = 0;
+  }
+
+  return changedPercentage/100;
+}
+// Functions!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 const employees = [
   {
     name: 'Atticus',
@@ -30,6 +81,13 @@ const employees = [
     reviewRating: 1
   }
 ];
+
+//Testing########################################################################
+for(i=0; i<employees.length; i++){
+  employeeBonus(employees[i]);
+}
+
+//Testing########################################################################
 
 // YOU SHOULD NOT NEED TO CHANGE ANYTHING ABOVE THIS POINT
 
